@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import * as tf from '@tensorflow/tfjs';
 
@@ -7,7 +8,7 @@ export class LeadScoreService {
   private modelTrained = false;
   private readonly MODEL_URL = 'indexeddb://lead-score-model';
 
-  constructor() {}
+  constructor(private http:HttpClient) {}
 
   private buildModel() {
     this.model = tf.sequential();
@@ -52,5 +53,12 @@ export class LeadScoreService {
     const prediction = this.model.predict(inputTensor) as tf.Tensor;
     const score = prediction.dataSync()[0];
     return Math.round(score * 100);
+  }
+     private apiUrl = 'http://localhost:3002/broker-suggestions';
+
+  // constructor(private http: HttpClient) {}
+
+  getBrokerSuggestions(leads: any[]) {
+    return this.http.post<{ suggestions: any[] }>(this.apiUrl, { leads });
   }
 }
