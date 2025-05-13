@@ -1,0 +1,91 @@
+<!-- lead-table.component.html -->
+<!-- 
+<nz-table #basicTable [nzData]="data" nzSize="small" [nzScroll]="{'x':'800px'}">
+  <thead>
+    <tr>
+      <th nzWidth="100px">Lead ID</th>
+      <th nzWidth="200px">Name</th>
+      <th nzWidth="250px">Email</th>
+      <th nzWidth="150px">Phone</th>
+      <th nzWidth="150px">Location Preference</th>
+      <th nzWidth="150px">Property Type</th>
+      <th nzWidth="150px">Budget</th>
+      <th nzWidth="150px">Engagement Level</th>
+      <th nzWidth="150px">Interactions</th>
+      <th nzWidth="150px">Last Contacted (Days)</th>
+      <th nzWidth="150px">Converted</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let lead of data">
+      <td>{{ lead.lead_id }}</td>
+      <td>{{ lead.name }}</td>
+      <td>{{ lead.email }}</td>
+      <td>{{ lead.phone }}</td>
+      <td>{{ lead.location_preference }}</td>
+      <td>{{ lead.property_type }}</td>
+      <td>{{ lead.budget | currency }}</td>
+      <td>{{ lead.engagement_level }}</td>
+      <td>{{ lead.interactions }}</td>
+      <td>{{ lead.last_contacted_days_ago }}</td>
+      <td>{{ lead.converted ? 'Yes' : 'No' }}</td>
+    </tr>
+  </tbody>
+</nz-table> -->
+<nz-table
+  [nzData]="leadData"
+  [nzScroll]="{ x: '1600px' ,y:'55vh' }"
+  [nzBordered]="true"
+  [nzSize]="'small'"
+>
+  <thead>
+    <tr>
+      <th nzWidth="50px">Lead ID</th>
+      <th nzWidth="100px">Name</th>
+      <th nzWidth="65px">City</th>
+      <th nzWidth="75px">Budget</th>
+      <th nzWidth="80px">Property Type</th>
+      <th nzWidth="40px">BHK</th>
+      <th nzWidth="60px">Purpose</th>
+      <th nzWidth="100px">Employment Status</th>
+      <th nzWidth="90px">Channel Source</th>
+      <th nzWidth="70px">Interactions</th>
+      <th nzWidth="50px">Site Visit</th>
+      <th nzWidth="100px">Project Match Score</th>
+      <th nzWidth="70px">Engagement</th>
+      <th nzWidth="70px">Converted</th>
+      <th nzWidth="40px">Score</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of leadData">
+      <td>{{ item.Lead_ID }}</td>
+      <td>{{ item.Name }}</td>
+      <td>{{ item.City }}</td>
+      <td>{{ item.Budget | currency:'INR' }}</td>
+      <td>{{ item.Property_Type_Interest }}</td>
+      <td>{{ item.BHK_Interest }}</td>
+      <td>{{ item.Purpose }}</td>
+      <td>{{ item.Employment_Status }}</td>
+      <td>{{ item.Channel_Source }}</td>
+      <td>{{ item.Interaction_Count }}</td>
+      <td>
+        <nz-tag [nzColor]="item.Site_Visit_Completed ? 'green' : 'red'">
+          {{ item.Site_Visit_Completed ? 'Yes' : 'No' }}
+        </nz-tag>
+      </td>
+      <td>{{ item.Project_Match_Score }}</td>
+      <td>{{ item.Engagement_Score }}</td>
+      <td>
+        <nz-tag [nzColor]="item.Converted ? 'green' : 'volcano'">
+          {{ item.Converted ? 'Yes' : 'No' }}
+        </nz-tag>
+      </td>
+      <td>
+        <!-- <nz-tag [nzColor]="item.score ? 'green' : 'volcano'"> -->
+          {{ item.score }}
+        <!-- </nz-tag> -->
+      </td>
+    </tr>
+  </tbody>
+</nz-table>
