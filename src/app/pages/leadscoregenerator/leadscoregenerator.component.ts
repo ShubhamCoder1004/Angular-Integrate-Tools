@@ -99,7 +99,7 @@ export class LeadscoregeneratorComponent {
     Interaction_Count: 11,
     Site_Visit_Completed: 1,
     Project_Match_Score: 3,
-    Engagement_Score: 100,
+    Engagement_Score: 80,
     Converted: 1,
     score: 0,
   },
